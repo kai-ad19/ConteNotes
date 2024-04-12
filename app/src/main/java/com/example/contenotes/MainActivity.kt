@@ -24,6 +24,7 @@ class MainActivity : ComponentActivity() {
         val dbHelper = SQLDatabaseActivity(this)
         val db = dbHelper.writableDatabase
 
+
         val viewcasesButton: Button = findViewById(R.id.btn_page_caselist)
         viewcasesButton.setOnClickListener{
             val intent = Intent(this, ListCaseActivity::class.java)

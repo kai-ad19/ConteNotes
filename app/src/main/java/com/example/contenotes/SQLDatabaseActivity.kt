@@ -28,7 +28,7 @@ class SQLDatabaseActivity(context: Context) : SQLiteOpenHelper(context, DATABASE
 
     // Functions / Statements for creating & deleting tables
     companion object {
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 2
         const val DATABASE_NAME = "UserData.db"
 
         // Cases
@@ -45,8 +45,9 @@ class SQLDatabaseActivity(context: Context) : SQLiteOpenHelper(context, DATABASE
         // Notes
         private const val SQL_CREATE_NOTE_ENTRIES = // Create
             "CREATE TABLE IF NOT EXISTS notes (" +
-                    "note_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "note_id INTEGER PRIMARY KEY AUTOINCREMENT," + // Global note id
                     "case_id INTEGER," + // Associated case
+                    "local_note_id INTEGER," + // Local note id for the individual case
                     "title TEXT," +
                     "content TEXT," +
                     "hashvalue TEXT," + // Hash of the note
@@ -74,7 +75,7 @@ class SQLDatabaseActivity(context: Context) : SQLiteOpenHelper(context, DATABASE
         return db.insert("cases", null, values)
     }
     // Update existing
-    fun updateCase(id: Long, name: String, description: String, colour: String){
+    fun updateCase(id: Int, name: String, description: String, colour: String){
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val currentTime = LocalDateTime.now().format(formatter)
 
@@ -88,7 +89,7 @@ class SQLDatabaseActivity(context: Context) : SQLiteOpenHelper(context, DATABASE
         db.update("cases", values, "id = ?", arrayOf(id.toString()))
     }
     // Delete case
-    fun deleteCase(id: Long){
+    fun deleteCase(id: Int){
         val db = writableDatabase
         db.delete("cases", "id = ?", arrayOf(id.toString()))
     }
@@ -101,14 +102,30 @@ class SQLDatabaseActivity(context: Context) : SQLiteOpenHelper(context, DATABASE
 
 
     // ------ Note Management Functions
+    // Get # of notes in a case
+    fun getNotesCount(caseId: Int): Int {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT COUNT(*) FROM notes WHERE case_id = ?", arrayOf(caseId.toString()))
+        var count = 0
+        if (cursor.moveToFirst()){
+            count = cursor.getInt(0)
+        }
+        cursor.close()
+        return count
+    }
+
     // Create
     fun createNote(caseId: Int, title: String, content: String, hashvalue: String): Long {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val currentTime = LocalDateTime.now().format(formatter)
+        val existingNotes = getNotesCount(caseId)
+        println(existingNotes)
+        println(existingNotes+1)
 
         val db = writableDatabase
         val values = ContentValues().apply{
             put("case_id", caseId)
+            put("local_note_id", existingNotes + 1)
             put("title", title)
             put("content", content)
             put("hashvalue", hashvalue)
@@ -118,7 +135,7 @@ class SQLDatabaseActivity(context: Context) : SQLiteOpenHelper(context, DATABASE
     }
     // Update function for notes is not necessary as it goes against the purpose of the application
     // Delete
-    fun deleteNote(id: Long){
+    fun deleteNote(id: Int){
         val db = writableDatabase
         db.delete("notes", "id = ?", arrayOf(id.toString()))
     }
@@ -127,7 +144,10 @@ class SQLDatabaseActivity(context: Context) : SQLiteOpenHelper(context, DATABASE
         val db = readableDatabase
         return db.rawQuery("SELECT * FROM notes WHERE case_id = ?", arrayOf(caseId.toString()))
     }
-
-
+    // Fetch one
+    fun fetchSingleNote(noteId: Int): Cursor? {
+        val db = readableDatabase
+        return db.rawQuery("SELECT * FROM notes WHERE note_id = ? LIMIT 1 ", arrayOf(noteId.toString()))
+    }
 }
 

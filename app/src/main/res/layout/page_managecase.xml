@@ -10,200 +10,157 @@
         android:id="@+id/ui_constants"
         layout="@layout/ui_constants_layout"/>
 
-    <!-- Input Case Title -->
-    <TextView
-        android:id="@+id/title_caseTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="67dp"
-        android:fontFamily="@font/armata"
-        android:text="Case Title"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Scrolling container -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="74dp">
 
-    <FrameLayout
-        android:id="@+id/input_caseTitle"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginVertical="4dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="12dp"
-        android:background="@color/accentColor"
-        android:translationY="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:id="@+id/managecasecontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Input Case Title -->
+        <TextView
+            android:id="@+id/title_caseTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/armata"
+            android:text="Case Title"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <FrameLayout
-            android:id="@+id/container_caseTitle"
+            android:id="@+id/input_caseTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
-            android:background="#C0BAB2">
-
-            <EditText
-                android:id="@+id/editText_caseTitle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/armata"
-                android:hint="Enter text here"
-                android:inputType="text" />
-
-        </FrameLayout>
-    </FrameLayout>
-
-    <!-- Input Case Descripton -->
-    <TextView
-        android:id="@+id/title_caseDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="192dp"
-        android:fontFamily="@font/armata"
-        android:text="Case Description"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/input_caseDescription"
-        android:layout_width="0dp"
-        android:layout_height="180dp"
-        android:layout_marginVertical="4dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="225dp"
-        android:layout_marginEnd="12dp"
-        android:background="@color/accentColor"
-        android:translationY="225dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <FrameLayout
-            android:id="@+id/container_caseDescription"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
-            android:background="#C0BAB2">
-
-            <EditText
-                android:id="@+id/editText_caseDescription"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/armata"
-                android:gravity="top|left"
-                android:hint="Enter text here"
-                android:inputType="text"
-                android:textAlignment="viewStart" />
-        </FrameLayout>
-    </FrameLayout>
-
-    <!-- Enter case Hex Code -->
-    <TextView
-        android:id="@+id/title_caseColour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="440dp"
-        android:fontFamily="@font/armata"
-        android:text="Case Colour (Hex Code)"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/input_caseColour"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginVertical="4dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="460dp"
-        android:layout_marginEnd="12dp"
-        android:background="@color/accentColor"
-        android:translationY="475dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <FrameLayout
-            android:id="@+id/container_caseColour"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
-            android:background="#C0BAB2">
+            android:layout_height="60dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/accentColor"
+            android:padding="2dp">
 
             <FrameLayout
-                android:id="@+id/colourtag"
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:background="#E91E63">
-
-            </FrameLayout>
-
-            <EditText
-                android:id="@+id/editText_caseColour"
+                android:id="@+id/container_caseTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="12dp"
-                android:fontFamily="@font/armata"
-                android:hint="Enter Hex code here (#0-F x6)"
-                android:digits="0123456789ABCDEF"
-                android:inputType="textCapCharacters"
-                android:maxLength="6"/>
+                android:background="#C0BAB2">
 
+                <EditText
+                    android:id="@+id/editText_caseTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/armata"
+                    android:hint="Enter text here"
+                    android:inputType="text"/>
+            </FrameLayout>
         </FrameLayout>
-    </FrameLayout>
 
-    <Button
-        android:id="@+id/btn_ExportNotes"
-        style="@style/AppButtonStyle"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="601dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="242dp"
-        android:text="Export Notes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!-- Input Case Descripton -->
+        <TextView
+            android:id="@+id/title_caseDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/armata"
+            android:text="Case Description"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/btn_DeleteCase"
-        style="@style/AppButtonStyle"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="601dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="242dp"
-        android:text="Delete Case"
-        android:translationY="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <FrameLayout
+            android:id="@+id/input_caseDescription"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/accentColor"
+            android:padding="2dp">
+
+            <FrameLayout
+                android:id="@+id/container_caseDescription"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#C0BAB2">
+
+                <EditText
+                    android:id="@+id/editText_caseDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/armata"
+                    android:gravity="top|left"
+                    android:hint="Enter text here"
+                    android:inputType="text" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Enter case Hex Code -->
+        <TextView
+            android:id="@+id/title_caseColour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/armata"
+            android:text="Case Colour (Hex Code)"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <FrameLayout
+            android:id="@+id/input_caseColour"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/accentColor"
+            android:padding="2dp">
+            <FrameLayout
+                android:id="@+id/container_caseColour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#C0BAB2">
+
+                <FrameLayout
+                    android:id="@+id/colourtag"
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="#E91E63" />
+
+                <EditText
+                    android:id="@+id/editText_caseColour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="12dp"
+                    android:digits="0123456789ABCDEF"
+                    android:fontFamily="@font/armata"
+                    android:hint="Enter Hex code here (#0-F x6)"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="6" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Export Notes Button -->
+        <Button
+            android:id="@+id/btn_ExportNotes"
+            style="@style/AppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="Export Notes"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Delete Case Button -->
+        <Button
+            android:id="@+id/btn_DeleteCase"
+            style="@style/AppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="Delete Case"
+            android:layout_marginBottom="10dp"/>
+       </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

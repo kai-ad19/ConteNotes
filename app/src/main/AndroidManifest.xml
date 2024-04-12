@@ -47,7 +47,11 @@
             android:exported="false"
             android:theme="@style/Theme.ConteNotes"
             />
-
+        <activity
+            android:name=".ReadNoteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ConteNotes"
+            />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

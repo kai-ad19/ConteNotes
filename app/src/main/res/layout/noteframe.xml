@@ -4,28 +4,17 @@
     android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/caseframe"
+        android:id="@+id/noteframe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginVertical="4dp"
         android:background="@color/accentColor">
 
         <FrameLayout
-            android:id="@+id/colourtag"
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            android:background="#E91E63">
-
-        </FrameLayout>
-
-        <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="12dp"
+            android:layout_marginLeft="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:layout_marginBottom="2dp"
@@ -36,7 +25,7 @@
             android:paddingBottom="4dp">
 
             <TextView
-                android:id="@+id/caseid"
+                android:id="@+id/noteTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/armata"
@@ -45,7 +34,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/casetitle"
+                android:id="@+id/noteCreated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/armata"
@@ -54,22 +43,22 @@
                 android:translationY="20dp" />
 
             <TextView
-                android:id="@+id/caseaccessed"
+                android:id="@+id/hashvalue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/armata"
                 android:text="Last Accessed: Never"
-                android:textSize="12sp"
+                android:textSize="8sp"
                 android:translationY="34dp" />
 
             <Button
-                android:id="@+id/btn_openCase"
+                android:id="@+id/btn_readNote"
                 style="@style/AppButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center_vertical"
                 android:minWidth="120dp"
-                android:text="Open"
+                android:text="Read"
                 android:textAlignment="center" />
 
         </FrameLayout>

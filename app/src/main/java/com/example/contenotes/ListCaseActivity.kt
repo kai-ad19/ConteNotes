@@ -31,12 +31,6 @@ class ListCaseActivity : ComponentActivity() {
                 val colour = cursor.getString(cursor.getColumnIndex("colour"))
                 val id = cursor.getInt(cursor.getColumnIndex("id"))
 
-                println("CASE CONTENTS")
-                println(name)
-                println(accessed)
-                println(colour)
-                println(id)
-
                 // Generate new case frame
                 val outerCaseFrame = LayoutInflater.from(this).inflate(R.layout.caseframe, null) as LinearLayout
                 val innerCaseFrame = outerCaseFrame.findViewById<FrameLayout>(R.id.caseframe)
@@ -46,13 +40,21 @@ class ListCaseActivity : ComponentActivity() {
                 val caseXML_Colour = innerCaseFrame.findViewById<FrameLayout>(R.id.colourtag)
 
                 // Assign values
-                val paddedId = id.toString().padStart(3, '0')
-                caseXML_Id.text = String.format("Case #%03d", id)
+                val noteCount = dbHelper.getNotesCount(id)
+                caseXML_Id.text = String.format("Case #%03d - %d Notes", id, noteCount)
                 caseXML_Title.text = name
                 caseXML_Accessed.text = accessed
                 caseXML_Colour.setBackgroundColor(android.graphics.Color.parseColor("#$colour"))
 
                 caseListContainer.addView(outerCaseFrame)
+
+                // Connect the 'open' button to the 'View Notes' page.
+                val openButton = innerCaseFrame.findViewById<Button>(R.id.btn_openCase)
+                openButton.setOnClickListener{
+                    val intent = Intent(this, ListNoteActivity::class.java)
+                    intent.putExtra("CASE_ID", id)
+                    startActivity(intent)
+                }
             }
         }
 
@@ -75,13 +77,11 @@ class ListCaseActivity : ComponentActivity() {
         returnButton.text = "Menu"
         continueButton.text = "Create New"
 
-
-
-
-
-        continueButton.setOnClickListener{
+        continueButton.setOnClickListener{ // Create a new case
             val intent = Intent(this, CreateCaseActivity::class.java)
             startActivity(intent)
         }
+
+        // 'Open Case' is handled when generating the case list frames
     }
 }

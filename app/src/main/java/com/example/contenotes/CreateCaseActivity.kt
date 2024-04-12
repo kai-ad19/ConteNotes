@@ -70,8 +70,6 @@ class CreateCaseActivity : ComponentActivity() {
             } else {
                 Toast.makeText(this, "Missing case Title or Description", Toast.LENGTH_SHORT).show()
             }
-
-
         }
     }
 }
