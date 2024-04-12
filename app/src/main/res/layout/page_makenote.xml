@@ -6,64 +6,145 @@
     android:layout_height="match_parent">
 
     <!-- Header & Footer Buttons -->
-
-    <FrameLayout
-        android:id="@+id/caseframe"
-        android:layout_width="400dp"
-        android:layout_height="50dp"
-        android:layout_marginVertical="4dp"
-        android:background="@color/accentColor"
-        android:translationY="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/include">
-
-        <FrameLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
-            android:background="#C0BAB2">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Type Here" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </FrameLayout>
-    </FrameLayout>
-
     <include
         android:id="@+id/include"
-        layout="@layout/ui_constants_layout"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="-71dp" />
+        layout="@layout/ui_constants_layout" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/armata"
-        android:text="Case Title"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="67dp" />
+    <!-- Main container- scroll view -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="74dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="56dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="144dp">
+        <LinearLayout
+            android:id="@+id/makenotecontainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- Note Title -->
+            <TextView
+                android:id="@+id/title_noteTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/armata"
+                android:text="Note Title"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <FrameLayout
+                android:id="@+id/input_noteTitle"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/accentColor"
+                android:padding="2dp">
+
+                <FrameLayout
+                    android:id="@+id/container_noteTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#C0BAB2">
+
+                    <EditText
+                        android:id="@+id/editText_noteTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/armata"
+                        android:hint="Enter text here"
+                        android:inputType="text" />
+
+                </FrameLayout>
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/title_noteContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/armata"
+                android:text="Note Content"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/input_caseContent"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/accentColor"
+                android:padding="2dp">
+
+                <FrameLayout
+                    android:id="@+id/container_caseContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#C0BAB2">
+
+                    <EditText
+                        android:id="@+id/editText_noteContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/armata"
+                        android:gravity="top|left"
+                        android:hint="Enter text here"
+                        android:inputType="text"
+                        android:textAlignment="viewStart" />
+                </FrameLayout>
+            </FrameLayout>
+
+            <!-- Timestamp -->
+            <TextView
+                android:id="@+id/title_timestamp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/armata"
+                android:text="Time of Entry"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/value_timestamp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/armata"
+                android:text="Today"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- Hash Value -->
+
+            <TextView
+                android:id="@+id/title_hash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/armata"
+                android:text="Hash Value"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/value_hash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/armata"
+                android:text="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
