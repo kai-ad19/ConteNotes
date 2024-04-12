@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/caseframe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="4dp"
+        android:background="@color/accentColor">
+
+        <FrameLayout
+            android:id="@+id/colourtag"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="#E91E63">
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="#C0BAB2"
+            android:paddingLeft="4dp"
+            android:paddingTop="4dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="4dp">
+
+            <TextView
+                android:id="@+id/caseid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/armata"
+                android:text="Case #000 - 0 Notes"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/casetitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/armata"
+                android:text="Case Title"
+                android:textSize="12sp"
+                android:translationY="20dp" />
+
+            <TextView
+                android:id="@+id/caseaccessed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/armata"
+                android:text="Last Accessed: Never"
+                android:textSize="12sp"
+                android:translationY="34dp" />
+
+            <Button
+                android:id="@+id/button3"
+                style="@style/AppButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:minWidth="120dp"
+                android:text="Open"
+                android:textAlignment="center" />
+
+        </FrameLayout>
+    </FrameLayout>
+
+</LinearLayout>

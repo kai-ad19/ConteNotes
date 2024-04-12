@@ -23,10 +23,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CaseListActivity"
+            android:name=".ListCaseActivity"
             android:exported="false"
-            android:theme="@style/Theme.ConteNotes">
-        </activity>
+            android:theme="@style/Theme.ConteNotes"
+            />
+        <activity
+            android:name=".ListNoteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ConteNotes"
+            />
+        <activity
+            android:name=".CreateCaseActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ConteNotes"
+            />
+        <activity
+            android:name=".CreateNoteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ConteNotes"
+            />
+        <activity
+            android:name=".ManageCaseActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ConteNotes"
+            />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

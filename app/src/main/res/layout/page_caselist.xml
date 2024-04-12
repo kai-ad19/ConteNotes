@@ -6,9 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Header -->
-    <include layout="@layout/header_layout" />
+    <!-- Header & Footer Buttons -->
+    <include
+        android:id="@+id/ui_constants"
+        layout="@layout/ui_constants_layout">
+    </include>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="74dp"
+        android:translationY="-4dp">
+
+        <LinearLayout
+            android:id="@+id/caselistcontainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/caseframe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </RelativeLayout>
