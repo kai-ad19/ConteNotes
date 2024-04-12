@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.contenotes.ui.theme.ConteNotesTheme
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.Toast
 
 class MainActivity : ComponentActivity() {
     private lateinit var dbHelper: SQLDatabaseActivity
@@ -29,6 +30,15 @@ class MainActivity : ComponentActivity() {
         viewcasesButton.setOnClickListener{
             val intent = Intent(this, ListCaseActivity::class.java)
             startActivity(intent)
+        }
+
+        val appsettingsButton: Button = findViewById(R.id.btn_page_appSettings)
+        appsettingsButton.setOnClickListener{
+            Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show()
+        }
+        val appchangelogButton: Button = findViewById(R.id.btn_page_appChangelog)
+        appchangelogButton.setOnClickListener{
+            Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show()
         }
 
 

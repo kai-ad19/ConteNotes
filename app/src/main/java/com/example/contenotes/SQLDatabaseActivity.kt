@@ -28,7 +28,7 @@ class SQLDatabaseActivity(context: Context) : SQLiteOpenHelper(context, DATABASE
 
     // Functions / Statements for creating & deleting tables
     companion object {
-        const val DATABASE_VERSION = 2
+        const val DATABASE_VERSION = 3
         const val DATABASE_NAME = "UserData.db"
 
         // Cases
@@ -137,7 +137,7 @@ class SQLDatabaseActivity(context: Context) : SQLiteOpenHelper(context, DATABASE
     // Delete
     fun deleteNote(id: Int){
         val db = writableDatabase
-        db.delete("notes", "id = ?", arrayOf(id.toString()))
+        db.delete("notes", "note_id = ?", arrayOf(id.toString()))
     }
     // Fetch all
     fun fetchNotes(caseId: Int): Cursor? {

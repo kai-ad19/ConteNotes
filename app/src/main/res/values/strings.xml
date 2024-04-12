@@ -5,4 +5,7 @@
     <string name="btn_view_cases">View Cases</string>
     <string name="btn_app_settings">App Settings</string>
     <string name="btn_app_changelog">Change Log</string>
+
+    <!-- Secret Key for Encryption -->
+    <string name="encryptionkey">connoSuperkey278</string>
 </resources>

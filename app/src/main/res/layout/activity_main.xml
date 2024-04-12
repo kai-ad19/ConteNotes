@@ -53,10 +53,10 @@
 
     <Button
         android:id="@+id/btn_page_appSettings"
-        android:enabled="false"
         android:layout_width="265dp"
         android:layout_height="51dp"
         android:background="#522C31"
+        android:enabled="true"
         android:fontFamily="@font/asap"
         android:text="@string/btn_app_settings"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -72,10 +72,10 @@
 
     <Button
         android:id="@+id/btn_page_appChangelog"
-        android:enabled="false"
         android:layout_width="265dp"
         android:layout_height="51dp"
         android:background="#522C31"
+        android:enabled="true"
         android:fontFamily="@font/asap"
         android:text="@string/btn_app_changelog"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"

@@ -73,7 +73,10 @@ class ManageCaseActivity : ComponentActivity() {
         }
 
         // 'Export Notes' button
-
+        val exportNotesButton: Button = findViewById(R.id.btn_ExportNotes)
+        exportNotesButton.setOnClickListener{
+            Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show()
+        }
 
         // 'Delete Case' button
         val deleteCaseButton: Button = findViewById(R.id.btn_DeleteCase)

@@ -19,11 +19,24 @@ import java.time.format.DateTimeFormatter
 import java.security.MessageDigest
 import kotlin.math.log
 
+import java.security.Key
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
+import java.util.Base64
+
 fun String.sha256(): String {
     val bytes = MessageDigest.getInstance("SHA-256").digest(this.toByteArray())
     return bytes.joinToString("") { "%02x".format(it) }
 }
-
+fun encrypt(text: String, secretKey: String): String {
+    val cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
+    cipher.init(Cipher.ENCRYPT_MODE, generateKey(secretKey))
+    val encryptedBytes = cipher.doFinal(text.toByteArray())
+    return Base64.getEncoder().encodeToString(encryptedBytes)
+}
+private fun generateKey(secretKey: String): Key {
+    return SecretKeySpec(secretKey.toByteArray(), "AES")
+}
 class CreateNoteActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,10 +102,12 @@ class CreateNoteActivity : ComponentActivity() {
             note_content = edit_note_content.text.toString().trim()
             note_hash = note_content.sha256()
 
+            val encrypted_content = encrypt(note_content, getString(R.string.encryptionkey))
+
             // verify that title and description have been provided
             if (note_title.isNotEmpty() && note_content.isNotEmpty()){
                 val dbHelper = SQLDatabaseActivity(this)
-                val noteId = dbHelper.createNote(caseId, note_title, note_content, note_hash)
+                val noteId = dbHelper.createNote(caseId, note_title, encrypted_content, note_hash)
                 val localNoteId = dbHelper.getNotesCount(caseId)
                 Toast.makeText(this, String.format("Successfully added Case Note #%d\n(%d global note id)", localNoteId, noteId), Toast.LENGTH_SHORT).show()
 

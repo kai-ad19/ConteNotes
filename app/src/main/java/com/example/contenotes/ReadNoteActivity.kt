@@ -10,8 +10,22 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AlertDialog
 import java.io.Serializable
+import android.app.AlertDialog
+import java.security.Key
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
+import java.util.Base64
+
+fun decrypt(text: String, secretKey: String): String {
+    val cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
+    cipher.init(Cipher.ENCRYPT_MODE, generateKey(secretKey))
+    val encryptedBytes = cipher.doFinal(text.toByteArray())
+    return Base64.getEncoder().encodeToString(encryptedBytes)
+}
+private fun generateKey(secretKey: String): Key {
+    return SecretKeySpec(secretKey.toByteArray(), "AES")
+}
 
 class ReadNoteActivity : ComponentActivity() {
     private lateinit var dbHelper: SQLDatabaseActivity // Initiate database for getting notes
@@ -28,22 +42,29 @@ class ReadNoteActivity : ComponentActivity() {
         val cursor = dbHelper.fetchSingleNote(global_noteId)
         if (cursor != null){
             if (cursor.moveToFirst()){
+                // SQL Values
                 val local_noteId = cursor.getInt(cursor.getColumnIndex("local_note_id"))
                 val title = cursor.getString(cursor.getColumnIndex("title"))
                 val content = cursor.getString(cursor.getColumnIndex("content"))
                 val created = cursor.getString(cursor.getColumnIndex("created"))
                 val hashvalue = cursor.getString(cursor.getColumnIndex("hashvalue"))
 
+                // UI elements
                 val XMLnoteTitle: TextView = findViewById(R.id.editText_noteTitle)
                 val XMLnoteContent: TextView = findViewById(R.id.editText_noteContent)
                 val XMLnoteCreated: TextView = findViewById(R.id.value_timestamp)
                 val XMLnoteHash: TextView = findViewById(R.id.value_hash)
 
+                // Decrypt the content
+                val decrypted_content = decrypt(content, getString(R.string.encryptionkey))
+
+                // Assign values to ui elements
                 XMLnoteTitle.text = title
-                XMLnoteContent.text = content
+                XMLnoteContent.text = decrypted_content
                 XMLnoteCreated.text = created
                 XMLnoteHash.text = hashvalue
 
+                // Update header/buttons etc
                 val headerText: TextView = findViewById(R.id.header_text)
                 val returnButton: Button = findViewById(R.id.returnButton)
                 val continueButton: Button = findViewById(R.id.continueButton) // Used for 'delete'
