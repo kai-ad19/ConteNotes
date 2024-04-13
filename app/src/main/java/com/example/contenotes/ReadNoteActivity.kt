@@ -19,9 +19,9 @@ import java.util.Base64
 
 fun decrypt(text: String, secretKey: String): String {
     val cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
-    cipher.init(Cipher.ENCRYPT_MODE, generateKey(secretKey))
-    val encryptedBytes = cipher.doFinal(text.toByteArray())
-    return Base64.getEncoder().encodeToString(encryptedBytes)
+    cipher.init(Cipher.DECRYPT_MODE, generateKey(secretKey))
+    val decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(text))
+    return String(decryptedBytes)
 }
 private fun generateKey(secretKey: String): Key {
     return SecretKeySpec(secretKey.toByteArray(), "AES")
